@@ -25,11 +25,10 @@ const appConfig = new AppConfig(['store_write', 'publish_data']);
 const userSession = new UserSession({ appConfig });
 const mainnet = new StacksMainnet();
 
-// change this constants according to needs
+// change this constants according to needs (currently placeholders until the contract is deployed on chain)
 const contractAddress = 'SP2QF5522FB9Y4X35TPGX29H7F4EMH5RSZV27X7FH';
 const contractName = 'nothing-burner';
 const functionNameBurn = 'burn-nothing';
-// const functionNameAmount = 'burn-amount';
 
 const description = `By burning any amount of $NOT you'll receive a commemorative NFT in your wallet.
 <span style="color: red; font-size:15px;">WARNING:</span> Burning $NOT tokens is irreversible, once you commit to the burn you won't be able to retrieve your tokens!!`;
@@ -51,16 +50,14 @@ function App() {
 
   const [authenticated, setAuthenticated] = useState(false);
   const [userPrincipal, setUserPrincipal] = useState('');
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [amount, setAmount] = useState(0);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [balance, setBalance] = useState(0);
 
   // --------------------------------------------- //
   // ----------------- FUNCTIONS ----------------- //
   // --------------------------------------------- //
 
-  // Connect + get balance function
+  // Connect wallet function
   function authenticate() {
     showConnect({
       appDetails: {
@@ -77,6 +74,7 @@ function App() {
     });
   }
 
+  // Get balance function
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -96,7 +94,7 @@ function App() {
         }
       } catch (error) {
         console.error('Error fetching data:', error);
-        // show error loading data panel and reload page btn
+        // show error loading balance data and reload page button
       }
     };
 
@@ -133,7 +131,7 @@ function App() {
   };
 
 
-  // Burn button function
+  // Burn button function  (currently placeholders until the contract is deployed on chain)
   async function handleBurnClick() {
 
     const functionArgs = [
@@ -177,8 +175,6 @@ function App() {
 
     <div className="home-container">
 
-
-
       {authenticated ? (
         <>
           <button className="auth-button" disabled>{userPrincipal}</button>
@@ -186,8 +182,6 @@ function App() {
       ) : (
         <button className="auth-button" onClick={authenticate}>Authenticate</button>
       )}
-
-
 
       <div className="burn-panel-wrapper">
         <img src={burnChrome} alt="chrome1" className="burn-chrome" />
