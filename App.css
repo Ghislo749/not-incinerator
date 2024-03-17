@@ -1,0 +1,227 @@
+
+.home-container {
+  background: linear-gradient(
+    150deg,
+    rgba(51, 51, 51, 1) 0%,
+    rgba(47, 47, 47, 1) 3%,
+    rgba(25, 25, 25, 1) 43%,
+    rgba(18, 18, 18, 1) 100%
+  );
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  top: 0;
+}
+
+.auth-button {
+  border: none;
+  border-radius: 16px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  color: #d6d6d6; 
+  background: linear-gradient(144deg, #3a3a3a -69.07%, #2b2b2b 122.22%);
+  position: absolute;
+  top: 15px; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.auth-button:hover {
+  box-shadow: 2px 2px 5px 0px rgba(218, 218, 218, 0.5),
+    -2px -2px 5px 0px rgba(143, 143, 143, 0.5);
+}
+
+
+
+/* ---------------------------------------- Burn Panel ---------------------------------------- */
+
+.burn-panel-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 60%;
+  max-width: 600px;
+  max-height: 420px;
+  z-index: 3;
+}
+
+
+.burn-panel-rect {
+  height: 100%;
+  width: 100%;
+  border-radius: 16px;
+  background: linear-gradient(144deg, #3a3a3a -69.07%, #1f1f1f 122.22%);
+  box-shadow: 4px 2px 9px 0px rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+
+/*
+
+.burn-panel-wrapper:hover .burn-panel-rect {
+  box-shadow: 2px 2px 5px 0px rgba(45, 48, 255, 0.5),
+    -2px -2px 5px 0px rgba(255, 111, 16, 0.5);
+}
+
+*/
+
+.burn-chrome {
+  position: absolute;
+  width: 120px;
+  height: 155px;
+  margin-left: 5px;
+  bottom: 5px;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.burn-panel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+}
+
+.burn-title-text {
+  padding-top: 21px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 31px;
+  font-weight: 500;
+  color: #d6d6d6;
+  z-index: 5;
+}
+
+.burn-panel-line {
+  background-color: #d6d6d6;
+  min-height: 1px;
+  width: 85%;
+  margin-top: -15px;
+  padding-bottom: 1px;
+  z-index: 5;
+}
+
+.burn-descr-text {
+  width: 85%;
+  text-align: center;
+  white-space:  pre-wrap;
+  font-size: 13px;
+  font-weight: 500;
+  color: #acacac;
+  z-index: 5;
+}
+
+.balance-text {
+  width: 50%;
+  font-size: 14px;
+  margin-top: -15px;
+  text-align: right;
+  color: #6e6e6e;
+}
+
+.burn-button {
+  border: none;
+  border-radius: 16px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  color: #d6d6d6; 
+  background: linear-gradient(144deg, #3a3a3a -69.07%, #2b2b2b 122.22%);
+}
+
+.burn-button:hover {
+  box-shadow: 2px 2px 5px 0px rgba(218, 218, 218, 0.5),
+    -2px -2px 5px 0px rgba(143, 143, 143, 0.5);
+}
+
+
+/* ---------------------------------------- Input field ---------------------------------------- */
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 310px;
+  height: 42px;
+  margin-top: 21px;
+  cursor: text;
+  z-index: 91;
+}
+
+.input-rect1 {
+  position: absolute;
+  width: 100%;
+  height: 42px;
+  border-radius: 20px;
+  background: linear-gradient(108deg, #525252 48.23%, #3a3a3a 96.81%);
+  z-index: 92;
+}
+
+.input-rect1.active {
+  background: linear-gradient(130deg, #f3f3f3 10.23%, #a7a7a7 96.81%);
+}
+
+.input-rect2 {
+  position: absolute;
+  width: 99%;
+  height: 38px;
+  border-radius: 18px;
+  background: linear-gradient(108deg, #222222 48.23%, #1b1b1b 96.81%);
+  z-index: 93;
+}
+
+.input-rect3 {
+  position: absolute;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  gap: 6px;
+  width: 98%;
+  max-height: 34px;
+  border-radius: 18px;
+  background: linear-gradient(304deg, #2c2c2c, #222222, #292929);
+  box-shadow: 2px 3px 10px 0px #070709 inset,
+    -2px -2px 10px 0px rgba(255, 255, 255, 0.05) inset;
+  z-index: 94;
+}
+
+.input-icon {
+  margin-left: 12px;
+  top: 6px;
+  z-index: 95;
+  user-select: none;
+  pointer-events: none;
+}
+
+.input-input {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: end;
+  width: 80%;
+  min-height: 34px;
+  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #e9e9e9;
+  z-index: 96;
+}
+
+.input-input::-webkit-inner-spin-button,
+.input-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
