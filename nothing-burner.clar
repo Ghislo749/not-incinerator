@@ -5,20 +5,18 @@
 (define-constant CONTRACT_OWNER tx-sender)
 
 ;; Public variables ;;
-(define-data-var nothing-burner-amount (uint 0))
+(define-data-var nothing-burner-amount uint u0)
 
 ;; Functions ;;
-(define-read-only (get-nothing-burner-amount)
-  nothing-burner-amount)
+(define-read-only (get-nothing-burner-amount) 
+    (ok (var-get nothing-burner-amount)))
 
-(define-private (update-nothing-burner-amount (amount uint))
-  (set! nothing-burner-amount (+ nothing-burner-amount amount))
-  (ok true))
-
+(define-private (increase-nothing-burner-amount (amount uint))
+    (var-set nothing-burner-amount (+ (var-get nothing-burner-amount) amount)))
 
 (define-public (burn-nothing (amount uint))
-  (if (contract-call? SP32AEEF6WW5Y0NMJ1S8SBSZDAY8R5J32NBZFPKKZ.nope unwrap amount)
-      (if (contract-call? SP32AEEF6WW5Y0NMJ1S8SBSZDAY8R5J32NBZFPKKZ.micro-nthng transfer CONTRACT_OWNER.nothing-burner amount)
-          (update-nothing-burner-amount amount)  
-          ERR-ERROR-TRANSFER)
-      ERR-ERROR-UNWRAP))
+    (begin 
+        (unwrap! (contract-call? 'SP32AEEF6WW5Y0NMJ1S8SBSZDAY8R5J32NBZFPKKZ.nope unwrap amount) (err ERR-ERROR-UNWRAP))
+        (unwrap! (contract-call? 'SP32AEEF6WW5Y0NMJ1S8SBSZDAY8R5J32NBZFPKKZ.micro-nthng transfer (as-contract tx-sender) amount) (err ERR-ERROR-TRANSFER))
+        (increase-nothing-burner-amount amount)
+        (ok true)))
