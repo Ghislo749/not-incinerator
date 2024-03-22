@@ -29,6 +29,7 @@
 
 (define-public (burn-nothing (amount uint))
     (begin 
+        (asserts! (> amount 0) (err ERR-YOU-POOR))
         (unwrap! (contract-call? 'SP32AEEF6WW5Y0NMJ1S8SBSZDAY8R5J32NBZFPKKZ.nope unwrap amount) (err ERR-ERROR-UNWRAP))
         (unwrap! (contract-call? 'SP32AEEF6WW5Y0NMJ1S8SBSZDAY8R5J32NBZFPKKZ.micro-nthng transfer (as-contract tx-sender) amount) (err ERR-ERROR-TRANSFER))
         (map-set burns-list tot-burns {maker: tx-sender, amount: amount})
