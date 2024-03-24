@@ -18,7 +18,7 @@
     (ok (var-get tot-burns)))
 
 (define-read-only (get-burns-list (index uint))
-    (ok (map-get burns-list index)))   
+    (ok (map-get? burns-list index)))   
 
 (define-private (increase-burned-amount (amount uint))
     (var-set tot-burned-amount (+ (var-get tot-burned-amount) amount)))
@@ -32,7 +32,7 @@
         (asserts! (> amount 0) (err ERR-YOU-POOR))
         (unwrap! (contract-call? 'SP32AEEF6WW5Y0NMJ1S8SBSZDAY8R5J32NBZFPKKZ.nope unwrap amount) (err ERR-ERROR-UNWRAP))
         (unwrap! (contract-call? 'SP32AEEF6WW5Y0NMJ1S8SBSZDAY8R5J32NBZFPKKZ.micro-nthng transfer (as-contract tx-sender) amount) (err ERR-ERROR-TRANSFER))
-        (map-set burns-list tot-burns {maker: tx-sender, amount: amount})
+        (map-insert burns-list tot-burns {maker: tx-sender, amount: amount})
         (increase-burned-amount amount)
         (increase-tot-burns)
         (ok true)))
