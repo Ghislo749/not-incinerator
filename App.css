@@ -1,5 +1,9 @@
-
 .home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
   background: linear-gradient(
     150deg,
     rgba(51, 51, 51, 1) 0%,
@@ -8,10 +12,14 @@
     rgba(18, 18, 18, 1) 100%
   );
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 100%;
   z-index: 1;
   top: 0;
 }
+
+
+/* ---------------------------------------- Auth Button ---------------------------------------- */
 
 .auth-button {
   border: none;
@@ -21,12 +29,9 @@
   font-weight: bold;
   cursor: pointer;
   outline: none;
-  color: #d6d6d6; 
+  color: #d6d6d6;
   background: linear-gradient(144deg, #3a3a3a -69.07%, #2b2b2b 122.22%);
-  position: absolute;
-  top: 15px; 
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 10px;
   z-index: 2;
 }
 
@@ -35,25 +40,76 @@
     -2px -2px 5px 0px rgba(143, 143, 143, 0.5);
 }
 
+/* ---------------------------------------- Tot Burned Text ---------------------------------------- */
+
+.tot-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.tot-wrapper2 {
+  margin-top: 21px;
+  margin-bottom: 42px;
+  width: 48%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.not-img {
+  width: 80px;
+  height: 80px;
+  margin-top: -21px;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.tot-line {
+  background-color: #d6d6d6;
+  min-height: 1px;
+  width: 90%;
+  padding-bottom: 1px;
+  z-index: 5;
+}
+
+.tot-burned-text {
+  text-align: center;
+  white-space: nowrap;
+  font-size: 31px;
+  font-weight: 500;
+  color: #d6d6d6;
+  z-index: 5;
+}
+
+.tot-burned-text2 {
+  text-align: center;
+  white-space: nowrap;
+  margin-top: -5px;
+  font-size: 44px;
+  font-weight: 400;
+  color: #acacac;
+  z-index: 5;
+}
 
 
 /* ---------------------------------------- Burn Panel ---------------------------------------- */
 
 .burn-panel-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 90%;
-  height: 60%;
   max-width: 600px;
-  max-height: 420px;
+  min-width: 390px;
+  height: 420px;
+  margin-bottom: 42px;
   z-index: 3;
 }
 
-
 .burn-panel-rect {
-  height: 100%;
+  height: 420px;
   width: 100%;
   border-radius: 16px;
   background: linear-gradient(144deg, #3a3a3a -69.07%, #1f1f1f 122.22%);
@@ -61,21 +117,12 @@
   z-index: 4;
 }
 
-/*
-
-.burn-panel-wrapper:hover .burn-panel-rect {
-  box-shadow: 2px 2px 5px 0px rgba(45, 48, 255, 0.5),
-    -2px -2px 5px 0px rgba(255, 111, 16, 0.5);
-}
-
-*/
-
 .burn-chrome {
   position: absolute;
   width: 120px;
   height: 155px;
   margin-left: 5px;
-  bottom: 5px;
+  margin-top: 260px;
   pointer-events: none;
   z-index: 6;
 }
@@ -113,7 +160,7 @@
 .burn-descr-text {
   width: 85%;
   text-align: center;
-  white-space:  pre-wrap;
+  white-space: pre-wrap;
   font-size: 13px;
   font-weight: 500;
   color: #acacac;
@@ -136,7 +183,7 @@
   font-weight: bold;
   cursor: pointer;
   outline: none;
-  color: #d6d6d6; 
+  color: #d6d6d6;
   background: linear-gradient(144deg, #3a3a3a -69.07%, #2b2b2b 122.22%);
 }
 
@@ -225,3 +272,124 @@
   margin: 0;
 }
 
+
+/* ---------------------------------------- Error Panel ---------------------------------------- */
+
+.error-modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 110;
+}
+
+.error-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.error-modal button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.error-modal button:hover {
+  background-color: #0056b3;
+}
+
+
+/* ---------------------------------------- Burners List ---------------------------------------- */
+
+.burners-text {
+  margin-bottom: 42px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 21px;
+  font-weight: 500;
+  color: #d6d6d6;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.burners-text:hover {
+  text-decoration: underline;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 998;
+}
+
+.burners-panel-rect {
+  height: 420px;
+  width: 60%;
+  border-radius: 16px;
+  background: linear-gradient(144deg, #3a3a3a -69.07%, #1f1f1f 122.22%);
+  box-shadow: 4px 2px 9px 0px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.burners-list {
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 420px;
+}
+
+.burners-list h2 {
+  text-align: center;
+  white-space: nowrap;
+  font-size: 30px;
+  font-weight: 500;
+  color: #d6d6d6;
+  margin-bottom: 10px;
+}
+
+.burners-line {
+  background-color: #d6d6d6;
+  min-height: 1px;
+  width: 70%;
+  padding-bottom: 1px;
+}
+
+.burners-list ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+  white-space: pre-wrap;
+  font-size: 17px;
+  font-weight: 500;
+  color: #acacac;
+}
+
+.burners-list ul li {
+  margin-bottom: 10px;
+}
